@@ -45,6 +45,8 @@ PLAN:
                         (ht, ?)
     if weight = difference return indice in tuple (highest, smallest)
 
+The hash_table_retrieve(hash_table, key) helps!!!
+for each loop lets us get the difference between limit and we
 
 """
 
@@ -52,35 +54,37 @@ PLAN:
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16) #limit size of hash table and this is what we are inserting into
     
+    # Keeping track of what index we are at during for each
     index = 0 #
     # for each weight in weights:
     for weight in weights: 
         # Find the difference of limit - weight
         difference = limit - weight
-        print("Index:", index,"Weight = ",weight,":" , "Difference = ",difference)
+        # print("Index:", index,"Weight = ",weight,":" , "Difference = ",difference)
         
-        # find the key to see if it is in ht: key = difference in ht
+        # find the key to see if it is in ht: key = difference 
         # hash_table_retrieve(hash_table, key)
         htRetrieval = hash_table_retrieve(ht, difference)
-        print("Retrieval", htRetrieval)
+        # retrieval will return the value of the key. That value is the stored index
+        # {[4, 0], [6, 1], [10, 2], [15, 3]}
         
         # if the the key(difference)ht is not None (if the key is there)
         if htRetrieval is not None:
-            # if the key is smaller than the index
+            # and if the key is smaller than the current index
             if htRetrieval < index:
                 print("inside if", index, htRetrieval )
-                # return the index
+                # return the current index of for each and the value of the key:value pair. Remember, the value of key:value pair is the index of weight at time of insertion. line 83 below
                 return(index, htRetrieval)
                 
 
-        # The difference
+        # Insert the current weight and it's  index
                 #hash_table_insert(hash_table, key, value)
         result = hash_table_insert(ht, weight, index)
-        index += 1
-        print("HT",ht)
-        
-        
 
+        # iterating and moving through each index
+        index += 1
+        # print("HT",ht)
+    # Else return none
     return None
 
 
