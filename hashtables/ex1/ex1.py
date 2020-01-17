@@ -1,9 +1,7 @@
 #  Hint:  You may not need all of these.  Remove the unused functions.
 from hashtables import (HashTable,
                         hash_table_insert,
-                        hash_table_remove,
-                        hash_table_retrieve,
-                        hash_table_resize)
+                        hash_table_retrieve)
 
 """
 UNDERSTANDING:
@@ -42,7 +40,7 @@ PLAN:
     hash_table = ht                    
     key = weight.value
     value = (index, difference)
-3. Compare weight.value in weight list to ht difference
+3. Compare weight.value in weight list to ht difference --> Within for loop
     hash_table_retrieve(hash_table, key) ?
                         (ht, ?)
     if weight = difference return indice in tuple (highest, smallest)
@@ -54,19 +52,34 @@ PLAN:
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16) #limit size of hash table and this is what we are inserting into
     
-    index = 0
-    for weight in weights:
+    index = 0 #
+    # for each weight in weights:
+    for weight in weights: 
+        # Find the difference of limit - weight
         difference = limit - weight
         print("Index:", index,"Weight = ",weight,":" , "Difference = ",difference)
+        
+        # find the key to see if it is in ht: key = difference in ht
+        # hash_table_retrieve(hash_table, key)
+        htRetrieval = hash_table_retrieve(ht, difference)
+        print("Retrieval", htRetrieval)
+        
+        # if the the key(difference)ht is not None (if the key is there)
+        if htRetrieval is not None:
+            # if the key is smaller than the index
+            if htRetrieval < index:
+                print("inside if", index, htRetrieval )
+                # return the index
+                return(index, htRetrieval)
+                
+
+        # The difference
+                #hash_table_insert(hash_table, key, value)
+        result = hash_table_insert(ht, weight, index)
         index += 1
-
-        result = hash_table_insert(ht, weight, (index, difference))
-        # htResult = hash_table_retrieve(ht, difference)
-
         print("HT",ht)
         
-
-    
+        
 
     return None
 
