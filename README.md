@@ -34,7 +34,7 @@ Explain how blockchain networks remain in consensus:
 
 ## Project Set Up
 
-#### [Hash Tables]
+#### [Hash Tables] []
 
 For the hash tables portion of the sprint challenge, you'll be working through two algorithm problems that are amenable to being solved efficiently using a hash table. You know the drill at this point. Navigate into each exercise's directory, read the instructions for the exercise laid out in the README, implement your solution in the .py skeleton file, then make sure your code passes the tests by running the test script with make tests.
 
@@ -42,7 +42,7 @@ A hash table implementation has been included for you already. Your task is to g
 
 *You may not use any advanced, built-in Python functions to solve these problems.*
 
-#### [Blockchain]
+#### [Blockchain] []
 
 For the blockchain portion of the challenge, you will be writing code for a new miner that will solve a different Proof of Work algorithm than the one we have been working with.
 
